@@ -12,11 +12,11 @@ class ItemModelTest(TestCase):
     def test_saving_and_retrieving_items(self):
         first_item = Item()
         first_item.text = 'The first (ever) list item'
-        first_item.save
+        first_item.save()
         
         second_item = Item()
         second_item.text = 'Item the second'
-        second_item.save
+        second_item.save()
         
         saved_items = Item.objects.all()
         self.assertEqual(saved_items.count(), 2)
