@@ -83,6 +83,12 @@ class ListViewTest(TestCase):
         self.assertContains(response, 'itemey 1')
         self.assertContains(response, 'itemey 2')
 
+    def test_passes_correct_list_to_template(self):
+        other_list = List.objects.create()
+        correct_list = List.objects.create()
+        response = self.client.get('/lists/%d/' % (correct_list.id,))
+        self.assertEqual(response.context['list'], correct_list)
+
 class NewListTest(TestCase):
 
     def test_saving_a_POST_request(self):
@@ -109,14 +115,11 @@ class NewItemTest(TestCase):
         other_list = List.objects.create()
         correct_list = List.objects.create()
         
-        print("Posting...")
         self.client.post(
             '/lists/%d/new_item' % (correct_list.id,),
             data={'item_text': 'A new item for an existing list'}
             )
                 
-        print("Sleeping")
-        time.sleep(6)
         self.assertEqual(Item.objects.all().count(), 1)
         new_item = Item.objects.all()[0]
         self.assertEqual(new_item.text, 'A new item for an existing list')
