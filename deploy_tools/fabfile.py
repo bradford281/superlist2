@@ -52,14 +52,6 @@ def _update_static_files(source_folder):
     ))
 
 def _update_database(source_folder):
-    run('cd %s && sudo ../virtualenv/bin/python3 manage.py syncdb --noinput' % (
-            source_folder,
-    ))
-
-    run('cd %s && ../virtualenv/bin/python3 manage.py migrate lists --fake 0001' % (
-            source_folder,
-    ))
-    
-    run('cd %s && ../virtualenv/bin/python3 manage.py migrate' % (
+    run('cd %s && sudo ../virtualenv/bin/python3 manage.py syncdb --migrate --noinput' % (
             source_folder,
     ))
