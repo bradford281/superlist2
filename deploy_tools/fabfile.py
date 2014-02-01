@@ -56,7 +56,7 @@ def _update_database(source_folder):
             source_folder,
     ))
 
-    run('cd %s && ../virtualenv/bin/python3 manage.py migrate --fake 0001' % (
+    run('cd %s && ../virtualenv/bin/python3 manage.py migrate lists --fake 0001' % (
             source_folder,
     ))
     
