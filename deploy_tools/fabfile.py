@@ -55,3 +55,11 @@ def _update_database(source_folder):
     run('cd %s && sudo ../virtualenv/bin/python3 manage.py syncdb --noinput' % (
             source_folder,
     ))
+
+    run('cd %s && ../virtualenv/bin/python3 manage.py migrate --fake 0001' % (
+            source_folder,
+    ))
+    
+    run('cd %s && ../virtualenv/bin/python3 manage.py migrate' % (
+            source_folder,
+    ))
