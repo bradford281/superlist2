@@ -43,7 +43,7 @@ INSTALLED_APPS = (
 
 AUTH_USER_MODEL = 'accounts.ListUser'
 AUTHENTICATION_BACKENDS = (
-    'accounts.backends.PersonaAuthenticationBackend',
+    'accounts.authentication.PersonaAuthenticationBackend',
 )
 
 MIDDLEWARE_CLASSES = (
